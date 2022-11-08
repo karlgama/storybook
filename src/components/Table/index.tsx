@@ -22,13 +22,19 @@ const Table = ({ primary = false, size = 'medium', tableFields, color }: TablePr
                     : <StyledTh className={mode}>Título do campo</StyledTh >}
 
             </StyledTr>
+            <StyledTr>
+                {tableFields
+                    ? tableFields.map(field => <StyledTd className={mode}>{field}</StyledTd>)
+                    : <StyledTh className={mode}>Título do campo</StyledTh >}
+            </StyledTr>
         </StyledTable>
     )
 }
 
-const StyledTable = styled.table`    
+const StyledTable = styled.table` 
+    box-sizing: border-box;
     &.primary{
-        background-color:#212529;        
+        background-color:#212529;    
         color:${(props) => props.color || '#fff'}        
     }
     &.secondary{
@@ -39,13 +45,13 @@ const StyledTable = styled.table`
     &.medium{
             width:50vw;        
         }
-        &.large{
-            width:100vw
-        }
+    &.large{
+        width:80vw
+    }
 `;
 
 const StyledTr = styled.tr`
-     &.primary{
+     &.primary{       
         border:none;
      }
      &.secondary{
@@ -61,5 +67,9 @@ const StyledTh = styled.th`
         border:solid 1px #000;
      }
 `;
-
+const StyledTd = styled.td`
+    color:#000;
+    background-color: #fff;    
+    text-align: center;
+`;
 export default Table;
