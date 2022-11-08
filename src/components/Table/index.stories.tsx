@@ -5,6 +5,11 @@ import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 import Table from './index'
 
+const mockFields = [
+    'Produto',
+    'valor'
+]
+
 const customViewports = {
     kindleFire2: {
         name: 'Kindle Fire 2',
@@ -24,7 +29,12 @@ export default {
         },
         size: {
             options: ['medium', 'large'],
-            control: { type: 'radio' }
+            control: { type: 'radio' },
+            defaultValue: 'medium'
+
+        },
+        color: {
+            control: 'color'
         }
     },
     parameters: {
@@ -41,12 +51,14 @@ export const Primary = Template.bind({});
 
 Primary.args = {
     primary: true,
+    tableFields: mockFields
 };
 
 export const Secondary = Template.bind({});
 
 Secondary.args = {
     primary: false,
-    size: 'large'
+    size: 'large',
+    tableFields: mockFields
 }
 
